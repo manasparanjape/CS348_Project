@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <button onclick="window.location.href='/register'">Sign Up</button>
+    <h1>Member Login</h1>
+    <% if (messages.error) { %>
+        <strong><%= messages.error %></strong>
+    <% } %>
+    <form action="/memberLogin" method="POST" id="memberLoginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+    <h1>Admin login</h1>
+    <form action="/adminLogin" method="POST" id="adminLoginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

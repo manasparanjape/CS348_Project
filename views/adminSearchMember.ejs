@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/adminSearchMember.css">
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.location.href='/adminHome'">Back</button>
+        <% if (error) { %>
+            <p><%= error %></p>
+        <% } else { %>
+            <% if (message) { %>
+                <p><%= message %></p>
+            <% } %>
+
+            <h1>Member details: </h1>
+            <p>Name: <%= member.Full_name %></p>
+            <p>Email: <%= member.Email %></p>
+            <p>Phone: <%= member.Phone %></p>
+            <p>Address: <%= member.Address %></p>
+            <p>Date of membership: <%= member.Date_of_membership %></p>
+            <p>Total fines: <%= member.Total_fines %></p>
+
+            <h1>Books rented by this member:</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Year</th>
+                        <th>Genre</th>
+                        <th>Language</th>
+                        <th>Due Date</th>
+                        <th>Fine</th>
+                        <th>Return</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% books.forEach(function(book, idx) { %>
+                        <tr>
+                            <td><%= book.ISBN %></td>
+                            <td><%= book.Title %></td>
+                            <td><%= book.Author %></td>
+                            <td><%= book.Year %></td>
+                            <td><%= book.Genre %></td>
+                            <td><%= book.Language %></td>
+                            <td><%= book.Due_date %></td>
+                            <td><%= book.Fine %></td>
+                            <td>
+                                <form action="/returnBook" method="POST">
+                                    <input type="hidden" name="ISBN" value="<%= book.ISBN %>">
+                                    <input type="hidden" name="Member_ID" value="<%= member.ID %>">
+                                    <input type="hidden" name="Date_of_issue" value="<%= book.Date_of_issue %>">
+                                    <input type="submit" value="Return">
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</body>
+</html>

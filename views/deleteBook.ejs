@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete book</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/bookPages.css">
+</head>
+<body>
+    <button onclick="window.location.href='/adminHome'">Back</button>
+    <h1>Delete Book</h1>
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } %>
+    <form action="/deleteBook" method="POST" id="deleteBookForm">
+        <label for="ISBN">ISBN:</label>
+        <input type="text" id="ISBN" name="ISBN" required>
+        <br>
+        <label for="Title">Title:</label>
+        <input type="text" id="Title" name="Title" required>
+        <br>
+        <input type="submit" value="Delete Book">
+    </form>
+</body>
+</html>

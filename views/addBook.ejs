@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add book</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/bookPages.css">
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.location.href='/adminHome'" class="back-button">Back</button>
+        <h1>Add book</h1>
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+        <form action="/addBook" method="POST" id="newBookForm">
+            <label for="ISBN">ISBN:</label>
+            <input type="text" id="ISBN" name="ISBN" required>
+            <br>
+            <label for="Title">Title:</label>
+            <input type="text" id="Title" name="Title" required>
+            <br>
+            <label for="Author">Author:</label>
+            <input type="text" id="Author" name="Author">
+            <br>
+            <label for="Publisher">Publisher:</label>
+            <input type="text" id="Publisher" name="Publisher">
+            <br>
+            <label for="Genre">Genre:</label>
+            <input type="text" id="Genre" name="Genre" required>
+            <br>
+            <label for="Year">Year:</label>
+            <input type="number" id="Year" name="Year">
+            <br>
+            <label>Language:</label>
+            <input type="text" id="Language" name="Language">
+            <br>
+            <label>Number_of_copies:</label>
+            <input type="number" min="1" id="Number_of_copies" name="Number_of_copies">
+            <br>
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
+</body>
+</html>
